@@ -1,9 +1,8 @@
 package com.example.calculator_science;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import org.mariuszgromada.math.mxparser.*;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
@@ -15,19 +14,20 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView previousCalculation;
+    //private TextView previousCalculation;
     private EditText display;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        previousCalculation = findViewById(R.id.previous_calculation);
+        //previousCalculation = findViewById(R.id.previous_calculation);
         display = findViewById(R.id.display);
 
         display.setShowSoftInputOnFocus(false); // not to show android keyboard
-
 
         Map<Integer, String> allPrintedBTNs = new HashMap<>();
         allPrintedBTNs.put(R.id.zero_BTN, getResources().getString(R.string.zeroText));
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         allPrintedBTNs.put(R.id.minus_BTN, getResources().getString(R.string.minusText));
         allPrintedBTNs.put(R.id.plus_BTN, getResources().getString(R.string.plusText));
         allPrintedBTNs.put(R.id.point_BTN, getResources().getString(R.string.pointText));
-        //allPrintedBTNs.put(R.id.equal_BTN, getResources().getString(R.string.oneText));
 
 
         View.OnClickListener printedBTN_push = new View.OnClickListener() {
@@ -86,8 +85,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        findViewById(R.id.equal_BTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userExp = display.getText().toString();
+                // add new library from https://mathparser.org/ for calculate expressions
+                Expression exp = new Expression(userExp);
+                String result = String.valueOf(exp.calculate());
 
+                display.setText(result);
+                display.setSelection(result.length());
+            }
+        });
+
+    }
+    // method for adding digits and operations into display
     private void updateText(String stringToAdd) {
         String oldStr = display.getText().toString();
         int cursorPos = display.getSelectionStart();
@@ -98,30 +110,4 @@ public class MainActivity extends AppCompatActivity {
         display.setSelection(cursorPos + stringToAdd.length());
     }
 
-
 }
-
-
-
-
- /*       findViewById(R.id.zero_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.one_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.two_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.three_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.four_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.five_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.six_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.seven_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.eight_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.nine_BTN).setOnClickListener(BTN_push);
-
-        //findViewById(R.id.clear_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.bracketsOpen_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.bracketsClose_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.divide_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.multiply_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.minus_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.plus_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.point_BTN).setOnClickListener(BTN_push);
-        //findViewById(R.id.equal_BTN).setOnClickListener(BTN_push);
-        findViewById(R.id.one_BTN).setOnClickListener(BTN_push);*/
