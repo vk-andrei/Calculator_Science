@@ -41,11 +41,10 @@
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="40dp"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/backspace_BTN"
@@ -67,9 +66,7 @@
             android:background="@drawable/clear_button_background"
             android:text="@string/clearText"
             android:textColor="@color/tanAccent"
-
             android:textSize="@dimen/size_of_text_buttons_in_vert_mode"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backspace_BTN" />
 
