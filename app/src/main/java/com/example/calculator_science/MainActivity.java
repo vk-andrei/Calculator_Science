@@ -3,6 +3,8 @@ package com.example.calculator_science;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,44 +26,65 @@ public class MainActivity extends AppCompatActivity {
         previousCalculation = findViewById(R.id.previous_calculation);
         display = findViewById(R.id.display);
 
-        display.setShowSoftInputOnFocus(false);
+        display.setShowSoftInputOnFocus(false); // not to show android keyboard
 
 
-        Map<Integer, String> allButtons = new HashMap<>();
-
-        allButtons.put(R.id.zero_BTN, getResources().getString(R.string.zeroText));
-        allButtons.put(R.id.one_BTN, getResources().getString(R.string.oneText));
-        allButtons.put(R.id.two_BTN, getResources().getString(R.string.twoText));
-        allButtons.put(R.id.three_BTN, getResources().getString(R.string.threeText));
-        allButtons.put(R.id.four_BTN, getResources().getString(R.string.fourText));
-        allButtons.put(R.id.five_BTN, getResources().getString(R.string.fiveText));
-        allButtons.put(R.id.six_BTN, getResources().getString(R.string.sixText));
-        allButtons.put(R.id.seven_BTN, getResources().getString(R.string.sevenText));
-        allButtons.put(R.id.eight_BTN, getResources().getString(R.string.eightText));
-        allButtons.put(R.id.nine_BTN, getResources().getString(R.string.nineText));
-        //allButtons.put(R.id.clear_BTN, getResources().getString(R.string.oneText));
-        allButtons.put(R.id.bracketsOpen_BTN, getResources().getString(R.string.bracketsOpen));
-        allButtons.put(R.id.bracketsClose_BTN, getResources().getString(R.string.bracketsClose));
-        allButtons.put(R.id.divide_BTN, getResources().getString(R.string.divideText));
-        allButtons.put(R.id.multiply_BTN, getResources().getString(R.string.multiplyText));
-        allButtons.put(R.id.minus_BTN, getResources().getString(R.string.minusText));
-        allButtons.put(R.id.plus_BTN, getResources().getString(R.string.plusText));
-        allButtons.put(R.id.point_BTN, getResources().getString(R.string.pointText));
-        //allButtons.put(R.id.equal_BTN, getResources().getString(R.string.oneText));
+        Map<Integer, String> allPrintedBTNs = new HashMap<>();
+        allPrintedBTNs.put(R.id.zero_BTN, getResources().getString(R.string.zeroText));
+        allPrintedBTNs.put(R.id.one_BTN, getResources().getString(R.string.oneText));
+        allPrintedBTNs.put(R.id.two_BTN, getResources().getString(R.string.twoText));
+        allPrintedBTNs.put(R.id.three_BTN, getResources().getString(R.string.threeText));
+        allPrintedBTNs.put(R.id.four_BTN, getResources().getString(R.string.fourText));
+        allPrintedBTNs.put(R.id.five_BTN, getResources().getString(R.string.fiveText));
+        allPrintedBTNs.put(R.id.six_BTN, getResources().getString(R.string.sixText));
+        allPrintedBTNs.put(R.id.seven_BTN, getResources().getString(R.string.sevenText));
+        allPrintedBTNs.put(R.id.eight_BTN, getResources().getString(R.string.eightText));
+        allPrintedBTNs.put(R.id.nine_BTN, getResources().getString(R.string.nineText));
+        allPrintedBTNs.put(R.id.bracketsOpen_BTN, getResources().getString(R.string.bracketsOpen));
+        allPrintedBTNs.put(R.id.bracketsClose_BTN, getResources().getString(R.string.bracketsClose));
+        allPrintedBTNs.put(R.id.divide_BTN, getResources().getString(R.string.divideText));
+        allPrintedBTNs.put(R.id.multiply_BTN, getResources().getString(R.string.multiplyText));
+        allPrintedBTNs.put(R.id.minus_BTN, getResources().getString(R.string.minusText));
+        allPrintedBTNs.put(R.id.plus_BTN, getResources().getString(R.string.plusText));
+        allPrintedBTNs.put(R.id.point_BTN, getResources().getString(R.string.pointText));
+        //allPrintedBTNs.put(R.id.equal_BTN, getResources().getString(R.string.oneText));
 
 
-        View.OnClickListener BTN_push = new View.OnClickListener() {
+        View.OnClickListener printedBTN_push = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateText(allButtons.get(view.getId()));
+                updateText(allPrintedBTNs.get(view.getId()));
             }
         };
 
-        for (Map.Entry entry : allButtons.entrySet()) {
+        for (Map.Entry entry : allPrintedBTNs.entrySet()) {
             //Log.d("TAG", String.valueOf(entry));
             int j = (int) entry.getKey();
-            findViewById(j).setOnClickListener(BTN_push);
+            findViewById(j).setOnClickListener(printedBTN_push);
         }
+
+
+        findViewById(R.id.clear_BTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                display.setText("");
+            }
+        });
+
+        findViewById(R.id.backspace_BTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cursorPos = display.getSelectionStart();
+                int textLen = display.getText().length();
+
+                if (cursorPos != 0 && textLen != 0) {
+                    SpannableStringBuilder selectedText = (SpannableStringBuilder) display.getText();
+                    selectedText.replace(cursorPos - 1, cursorPos, "");
+                    display.setText(selectedText);
+                    display.setSelection(cursorPos - 1);
+                }
+            }
+        });
 
     }
 
