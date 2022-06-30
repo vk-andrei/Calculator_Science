@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    //private TextView previousCalculation;
+    private TextView previousCalculation;
     private EditText display;
 
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //previousCalculation = findViewById(R.id.previous_calculation);
+        previousCalculation = findViewById(R.id.previous_calculation);
         display = findViewById(R.id.display);
 
         display.setShowSoftInputOnFocus(false); // not to show android keyboard
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 display.setText("");
+                previousCalculation.setText("");
             }
         });
 
@@ -89,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String userExp = display.getText().toString();
+
+                previousCalculation.setText(userExp);
+
                 // add new library from https://mathparser.org/ for calculate expressions
                 Expression exp = new Expression(userExp);
                 String result = String.valueOf(exp.calculate());
