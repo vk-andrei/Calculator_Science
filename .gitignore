@@ -45,3 +45,4 @@ output.json
 #NDK
 obj/
 idea/misc.xml
+.idea/misc.xml
