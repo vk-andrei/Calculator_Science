@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="theme_All_BTNs" format="reference" />
+    <attr name="theme_Operators_BTNs" format="reference" />
+
+</resources>

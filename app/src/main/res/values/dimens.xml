@@ -5,4 +5,7 @@
     <dimen name="display_text">48sp</dimen>
     <dimen name="default_padding">10dp</dimen>
     <dimen name="text_of_full_expression">24sp</dimen>
+    <dimen name="BTNs_width">80dp</dimen>
+    <dimen name="BTNs_height">70dp</dimen>
+
 </resources>

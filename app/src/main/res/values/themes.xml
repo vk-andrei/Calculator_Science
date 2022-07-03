@@ -11,6 +11,10 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+        <item name="theme_All_BTNs">@style/All_BTNs</item>
+        <item name="theme_Operators_BTNs">@style/All_BTNs.Operators</item>
+
     </style>
 </resources>
