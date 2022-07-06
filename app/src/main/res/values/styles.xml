@@ -19,9 +19,18 @@
         <item name="android:textColor">@color/greenAccent</item>
         <item name="android:background">@drawable/button_background_night</item>
     </style>
-
     <style name="All_BTNs.Night.Operators">
         <item name="android:background">@drawable/operations_button_background_night</item>
     </style>
+
+    <!-- THEME_TWO -->
+    <style name="All_BTNs.THEME_TWO">
+        <item name="android:textColor">?attr/colorError</item>
+        <item name="android:background">@drawable/button_background_theme2</item>
+    </style>
+    <style name="All_BTNs.THEME_TWO.Operators">
+        <item name="android:background">@drawable/operations_button_background_theme2</item>
+    </style>
+
 
 </resources>

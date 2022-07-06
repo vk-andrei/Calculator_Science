@@ -15,6 +15,13 @@
         <!-- Customize your theme here. -->
         <item name="theme_All_BTNs">@style/All_BTNs</item>
         <item name="theme_Operators_BTNs">@style/All_BTNs.Operators</item>
-
     </style>
+
+
+    <!--THEME_TWO-->
+    <style name="Theme.Calculator_Science.V2">
+        <item name="theme_All_BTNs">@style/All_BTNs.THEME_TWO</item>
+        <item name="theme_Operators_BTNs">@style/All_BTNs.THEME_TWO.Operators</item>
+    </style>
+
 </resources>

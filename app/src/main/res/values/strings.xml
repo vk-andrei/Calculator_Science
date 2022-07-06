@@ -24,5 +24,10 @@
     <string name="clearText">C</string>
     <string name="equalsText">=</string>
     <string name="backspace"> </string>
+    <string name="choose_theme">Choose THEME</string>
+
+    <string name="themeOne">THEME 1</string>
+    <string name="themeTwo">THEME 2</string>
+    <string name="internet">INTERNET BROWSER</string>
 
 </resources>
