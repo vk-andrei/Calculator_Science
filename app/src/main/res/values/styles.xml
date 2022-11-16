@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="All_BTNs" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:layout_width">@dimen/BTNs_width</item>
+        <item name="android:layout_height">@dimen/BTNs_height</item>
+        <item name="android:textColor">@color/tanAccent</item>
+        <item name="android:textSize">@dimen/size_of_text_buttons_in_vert_mode</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <style name="All_BTNs.Operators">
+        <item name="android:background">@drawable/operations_button_background</item>
+    </style>
+
+
+    <!-- FOR NIGHT -->
+    <style name="All_BTNs.Night">
+        <item name="android:textColor">@color/greenAccent</item>
+        <item name="android:background">@drawable/button_background_night</item>
+    </style>
+    <style name="All_BTNs.Night.Operators">
+        <item name="android:background">@drawable/operations_button_background_night</item>
+    </style>
+
+    <!-- THEME_TWO -->
+    <style name="All_BTNs.THEME_TWO">
+        <item name="android:textColor">?attr/colorError</item>
+        <item name="android:background">@drawable/button_background_theme2</item>
+    </style>
+    <style name="All_BTNs.THEME_TWO.Operators">
+        <item name="android:background">@drawable/operations_button_background_theme2</item>
+    </style>
+
+
+</resources>
